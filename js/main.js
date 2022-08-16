@@ -203,7 +203,7 @@ function totalCompra() {
   const itemsCarrito = itemsElegidosCarritoLS();
 
   return itemsCarrito.reduce(
-    (sumatoria, vino) => sumatoria + vino.cantidad * vino.precio,
+    (sumatoria, vino) => sumatoria + (vino.cantidad * vino.precio),
     0
   );
 }
