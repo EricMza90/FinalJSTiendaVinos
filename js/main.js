@@ -158,7 +158,8 @@ function agregarAlCarrito() {
 
 function botonCarrito() {
   let contenido = `<button type="button" class="btn">
-    <img src="image/cart.png" alt="cart" width="42"><span class="badge bg-secondary">${ArticulosEnCarrito()}</span></img>
+    <img src="image/cart.png" alt="cart" width="42"></img>
+    <span class="badge bg-secondary">${ArticulosEnCarrito()}</span>
   </button>`;
 
   document.getElementById("btn-cart").innerHTML = contenido;
