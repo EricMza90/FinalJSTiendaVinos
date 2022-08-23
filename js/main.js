@@ -87,6 +87,7 @@ const articulos = [
 
 const carrito = [];
 
+
 function subirstockLS(articulos) {
   localStorage.setItem("vinos", JSON.stringify(articulos));
 }
@@ -111,12 +112,13 @@ function stock() {
   stockTienda.forEach((vino) => {
     contenido += `<div id="${vino.id}" class= "col-md-3 container-tarjeta">
       <div class="card text-center text-white bg-secondary mb-3">
-      <img src="image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
+      <img src="/image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
       <div class="card-body">
         <h6 class="card-title">${vino.varietal}</h6>
         <p class="card-text">${vino.nombre}</p>
         <p class="card-text">$ ${vino.precio}</p>
         <button type="button" class="btn btn-success btn-agregar">Agregar al Carrito</button>
+        
       </div>
     </div>
     </div>`;
@@ -138,26 +140,18 @@ function agregarAlCarrito() {
         let item = articulos.find((vino) => vino.id === itemId);
         item.cantidad = 1;
         itemsCarrito.push(item);
+        
       }
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Producto Agregado!!',
+        showConfirmButton: false,
+        timer: 1000
+      })
       subirstockCarritoLS(itemsCarrito);
       botonCarrito();
-      vaciarCarrito();
-    });
-  });
-}
 
-function vaciarCarrito() {
-  const itemsCarrito = itemsElegidosCarritoLS();
-
-  const botones = document.querySelectorAll("#vaciar");
-
-  botones.forEach((boton) => {
-    boton.addEventListener("click", (e) => {
-      let itemId = parseInt(e.target.closest("#vaciar").id);
-      let item = itemsCarrito.findIndex((vino) => vino.id === itemId);
-      itemsCarrito.splice(item, 1);
-      subirstockCarritoLS(itemsCarrito);
-      botonCarrito();
     });
   });
 }
