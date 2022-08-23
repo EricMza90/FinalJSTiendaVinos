@@ -112,7 +112,7 @@ function stock() {
   stockTienda.forEach((vino) => {
     contenido += `<div id="${vino.id}" class= "col-md-3 container-tarjeta">
       <div class="card text-center text-white bg-secondary mb-3">
-      <img src="/image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
+      <img src="image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
       <div class="card-body">
         <h6 class="card-title">${vino.varietal}</h6>
         <p class="card-text">${vino.nombre}</p>
@@ -158,7 +158,7 @@ function agregarAlCarrito() {
 
 function botonCarrito() {
   let contenido = `<button type="button" class="btn">
-    <img src="/image/carrito.png" alt="cart" width="42">
+    <img src="image/carrito.png" alt="cart" width="42">
     <span class="badge bg-secondary"></img>${ArticulosEnCarrito()}</span>
   </button>`;
 
