@@ -158,7 +158,7 @@ function agregarAlCarrito() {
 
 function botonCarrito() {
   let contenido = `<button type="button" class="btn">
-    <img src="image/carrito.png" alt="cart" width="42">
+    <img src="image/cart.png" alt="cart" width="42">
     <span class="badge bg-secondary"></img>${ArticulosEnCarrito()}</span>
   </button>`;
 
