@@ -1,9 +1,9 @@
 function itemsEnCarrito() {
-  const elegidos = itemsElegidosCarritoLS();
+  const seleccion = itemsElegidosCarritoLS();
 
   let contenido = "";
 
-  if (elegidos.length == 0) {
+  if (seleccion.length == 0) {
     contenido = `<div class="alert alert-secondary text-center col-4 mx-auto" role="alert"> <b>Tu Carrito esta Vacio !!!</b></div>`;
   } else {
     contenido += `
@@ -18,7 +18,7 @@ function itemsEnCarrito() {
         <th class="text-white text-center"></th>
       </tr>
     </thead>`;
-    elegidos.forEach((vino) => {
+    seleccion.forEach((vino) => {
       contenido += `
         <tbody >
           <tr>
@@ -68,6 +68,31 @@ function itemsEnCarrito() {
   document.getElementById("productos").innerHTML = contenido;
 }
 
+function borrar() {
+  Toastify({
+      text: "Producto Eliminado",
+      duration: 1000,
+      gravity: "top",
+      position: "right",
+      style: {
+        background: "red",
+        color:"white",
+      }
+    }).showToast();
+}
+function agregar() {
+  Toastify({
+      text: "Producto Agregado",
+      duration: 1000,
+      gravity: "top",
+      position: "right",
+      style: {
+        background: "green",
+        color:"white",
+      }
+    }).showToast();
+}
+
 function eliminarItem() {
   const itemsCarrito = itemsElegidosCarritoLS();
 
@@ -83,14 +108,15 @@ function eliminarItem() {
       
       if(itemsCarrito[pos].cantidad == 0){
         itemsCarrito.splice(pos, 1);
-      
       }
+      
       subirstockCarritoLS(itemsCarrito);
       itemsEnCarrito();
       botonCarrito();
+      
     });
   });
-
+ 
 }
 
 function sumarItem() {
@@ -115,17 +141,18 @@ function sumarItem() {
 }
 
 function vaciarCarrito(){
-  const limpiar = localStorage.removeItem("elegidos");
- 
-  document.getElementById("vaciar").innerHTML = limpiar;
-
+  
+  localStorage.removeItem("elegidos");
+  
   itemsEnCarrito();
   botonCarrito();
+
 }
 
 function finalizarCompra(){
-  
+
 }
+
 
 itemsEnCarrito();
 agregarAlCarrito();

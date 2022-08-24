@@ -202,6 +202,7 @@ function totalCompra() {
   );
 }
 
+
 subirstockLS(articulos);
 stock();
 agregarAlCarrito();
