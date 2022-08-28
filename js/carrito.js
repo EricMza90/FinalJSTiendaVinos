@@ -117,21 +117,25 @@ function sumarItem() {
 }
 
 /* function vaciarCarrito(){
-  
-  localStorage.removeItem("elegidos");
-  
-  itemsEnCarrito();
-  botonCarrito();
 
-}
+ localStorage.removeItem("elegidos");
 
-function finalizarCompra(){
+ let contenido = `<button type="button" class="btn">
+ <span class="badge bg-secondary">${vaciarCarrito()}</span>
+</button>`;
 
-}
- */
+document.getElementById("vaciar_cart").innerHTML = contenido;
+
+itemsEnCarrito();
+botonCarrito();
+
+} */
+
+
 
 itemsEnCarrito();
 agregarAlCarrito();
 eliminarItem();
 sumarItem();
 botonCarrito();
+/* vaciarCarrito() */

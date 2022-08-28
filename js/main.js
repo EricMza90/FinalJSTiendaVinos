@@ -3,49 +3,49 @@ const articulos = [
     nombre: "Kaiken Estate",
     id: 1,
     precio: 1250,
-    imagen: "Kaiken-Malbec.png",
+    imagen: "kaikenmalbec.png",
     varietal: "MALBEC",
   },
   {
     nombre: "Killka",
     id: 2,
     precio: 1100,
-    imagen: "Killka-Malbec.png",
+    imagen: "kilkamalbec.png",
     varietal: "MALBEC",
   },
   {
     nombre: "Cordero con Piel de Lobo ",
     id: 3,
     precio: 990,
-    imagen: "Cordero-Lobo.png",
+    imagen: "corderolobo.png",
     varietal: "MALBEC",
   },
   {
     nombre: "Mil Piedras ",
     id: 4,
     precio: 1250,
-    imagen: "Mil-Piedras.png",
+    imagen: "milpiedras.png",
     varietal: "CABERNET SAUVIGNON",
   },
   {
     nombre: "AlbaFlor",
     id: 5,
     precio: 1300,
-    imagen: "Albaflor-Cabernet.png",
+    imagen: "albaflor.png",
     varietal: "CABERNET SAUVIGNON",
   },
   {
     nombre: "Trivento Reserve",
     id: 6,
     precio: 1300,
-    imagen: "Trivento-Reserve.png",
+    imagen: "trivento.png",
     varietal: "CABERNET SAUVIGNON",
   },
   {
     nombre: "La Flor Sauvignon Blanc",
     id: 7,
     precio: 1100,
-    imagen: "La-Flor-Blanc.png",
+    imagen: "laflorblanc.png",
     varietal: "BLANCO",
   },
   {
@@ -59,31 +59,53 @@ const articulos = [
     nombre: "Santa Julia Chenin Dulce",
     id: 9,
     precio: 820,
-    imagen: "Santa-Julia-Chenin-Dulce.png",
+    imagen: "chenin.png",
     varietal: "BLANCO",
   },
   {
     nombre: "Norton Cosecha Tardia",
     id: 10,
     precio: 690,
-    imagen: "Norton-Tardio.png",
+    imagen: "nortontardio.png",
     varietal: "BLANCO",
   },
   {
     nombre: "La Flor",
     id: 11,
     precio: 1150,
-    imagen: "La-Flor-Rose.png",
+    imagen: "laflorrose.png",
     varietal: "ROSE",
   },
   {
     nombre: "Kaiken Malbec",
     id: 12,
     precio: 1250,
-    imagen: "Kaiken-Rose.png",
+    imagen: "kaikenrose.png",
     varietal: "ROSE",
   },
 ];
+
+/* fetch("../json/articulos.json")
+.then((resp) => resp.json())
+.then ((data) => {
+  console.log(data)
+  let stock_prueba ="";
+  data.forEach(vino => {
+    stock_prueba +=`<div id="${vino.id}" class= "col-md-3 container-tarjeta">
+      <div class="card text-center text-white bg-secondary mb-3">
+      <img src="image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
+      <div class="card-body">
+        <h6 class="card-title">${vino.varietal}</h6>
+        <p class="card-text">${vino.nombre}</p>
+        <p class="card-text">$ ${vino.precio}</p>
+        <button type="button" class="btn btn-success btn-agregar">Agregar al Carrito</button>
+        
+      </div>
+    </div>
+    </div>`;
+    document.getElementById("productos").innerHTML = stock_prueba;
+  })
+}); */
 
 const carrito = [];
 
@@ -111,10 +133,10 @@ function stock() {
 
   stockTienda.forEach((vino) => {
     contenido += `<div id="${vino.id}" class= "col-md-3 container-tarjeta">
-      <div class="card text-center text-white bg-secondary mb-3">
+      <div class="card text-center text-white fw-bold bg-secondary mb-3">
       <img src="image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
       <div class="card-body">
-        <h6 class="card-title">${vino.varietal}</h6>
+        <h6 class="card-title fw-bold ">${vino.varietal}</h6>
         <p class="card-text">${vino.nombre}</p>
         <p class="card-text">$ ${vino.precio}</p>
         <button type="button" class="btn btn-success btn-agregar">Agregar al Carrito</button>
@@ -201,7 +223,6 @@ function totalCompra() {
     0
   );
 }
-
 
 subirstockLS(articulos);
 stock();
