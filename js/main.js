@@ -86,23 +86,21 @@ const articulos = [
 ];
 
 jsonALocalStorage();
-function jsonALocalStorage(){
+function jsonALocalStorage() {
   const array = [];
-  
+
   fetch("/json/articulos.json")
-  .then ((respuesta) => respuesta.json())
-  .then ((data) => {
-    if(typeof(data) === "string"){data = JSON.parse(data)}
-    else
-    data.forEach(function(item){
-      array.push(item);
-           });
-   
-   
-   (localStorage.setItem("json",  JSON.stringify(array)));
-  });
-  
-  
+    .then((respuesta) => respuesta.json())
+    .then((data) => {
+      if (typeof data === "string") {
+        data = JSON.parse(data);
+      } else
+        data.forEach(function (item) {
+          array.push(item);
+        });
+
+      localStorage.setItem("json", JSON.stringify(array));
+    });
 }
 const carrito = [];
 
@@ -119,8 +117,7 @@ function itemsElegidosCarritoLS() {
 }
 
 function stock() {
-  
-  const stockTienda =  stockEnLS();
+  const stockTienda = stockEnLS();
 
   let contenido = "";
 
@@ -137,7 +134,6 @@ function stock() {
       </div>
     </div>
     </div>`;
-    
   });
   document.getElementById("productos").innerHTML = contenido;
 }
@@ -156,18 +152,16 @@ function agregarAlCarrito() {
         let item = articulos.find((vino) => vino.id === itemId);
         item.cantidad = 1;
         itemsCarrito.push(item);
-        
       }
       Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Producto Agregado!!',
+        position: "top-center",
+        icon: "success",
+        title: "Producto Agregado!!",
         showConfirmButton: false,
-        timer: 1000
-      })
+        timer: 1000,
+      });
       guardarStockCarritoLS(itemsCarrito);
       botonCarrito();
-
     });
   });
 }
@@ -179,7 +173,6 @@ function botonCarrito() {
   </button>`;
 
   document.getElementById("btn-cart").innerHTML = contenido;
-
 }
 
 function ArticulosEnCarrito() {
@@ -213,7 +206,7 @@ function totalCompra() {
   const itemsCarrito = itemsElegidosCarritoLS();
 
   return itemsCarrito.reduce(
-    (sumatoria, vino) => sumatoria + (vino.cantidad * vino.precio),
+    (sumatoria, vino) => sumatoria + vino.cantidad * vino.precio,
     0
   );
 }
