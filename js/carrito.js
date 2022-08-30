@@ -85,7 +85,7 @@ function eliminarItem() {
       if(itemsCarrito[pos].cantidad == 0){
         itemsCarrito.splice(pos, 1);
       }
-      subirstockCarritoLS(itemsCarrito);
+      guardarStockCarritoLS(itemsCarrito);
       itemsEnCarrito();
       botonCarrito();
       
@@ -108,15 +108,15 @@ function sumarItem() {
       if(itemsCarrito[pos].cantidad == 0){
         itemsCarrito.push(pos, 1);
       }
-      subirstockCarritoLS(itemsCarrito);
+      guardarStockCarritoLS(itemsCarrito);
       itemsEnCarrito();
       botonCarrito();
     });
  
   });
 }
-
-/* function vaciarCarrito(){
+/* 
+function vaciarCarrito(){
 
  localStorage.removeItem("elegidos");
 

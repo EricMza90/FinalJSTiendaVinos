@@ -85,41 +85,33 @@ const articulos = [
   },
 ];
 
-/* fetch("../json/articulos.json")
-.then((resp) => resp.json())
-.then ((data) => {
-  console.log(data)
-  let stock_prueba ="";
-  data.forEach(vino => {
-    stock_prueba +=`<div id="${vino.id}" class= "col-md-3 container-tarjeta">
-      <div class="card text-center text-white bg-secondary mb-3">
-      <img src="image/${vino.imagen}" class="card-img-top" alt="${vino.nombre}">
-      <div class="card-body">
-        <h6 class="card-title">${vino.varietal}</h6>
-        <p class="card-text">${vino.nombre}</p>
-        <p class="card-text">$ ${vino.precio}</p>
-        <button type="button" class="btn btn-success btn-agregar">Agregar al Carrito</button>
-        
-      </div>
-    </div>
-    </div>`;
-    document.getElementById("productos").innerHTML = stock_prueba;
-  })
-}); */
-
+jsonALocalStorage();
+function jsonALocalStorage(){
+  const array = [];
+  
+  fetch("/json/articulos.json")
+  .then ((respuesta) => respuesta.json())
+  .then ((data) => {
+    if(typeof(data) === "string"){data = JSON.parse(data)}
+    else
+    data.forEach(function(item){
+      array.push(item);
+           });
+   
+   
+   (localStorage.setItem("json",  JSON.stringify(array)));
+  });
+  
+  
+}
 const carrito = [];
 
-
-function subirstockLS(articulos) {
-  localStorage.setItem("vinos", JSON.stringify(articulos));
+function stockEnLS() {
+  return JSON.parse(localStorage.getItem("json")) || [];
 }
 
-function productosEnLS() {
-  return JSON.parse(localStorage.getItem("vinos")) || [];
-}
-
-function subirstockCarritoLS(articulos) {
-  localStorage.setItem("elegidos", JSON.stringify(articulos));
+function guardarStockCarritoLS(array) {
+  localStorage.setItem("elegidos", JSON.stringify(array));
 }
 
 function itemsElegidosCarritoLS() {
@@ -127,7 +119,8 @@ function itemsElegidosCarritoLS() {
 }
 
 function stock() {
-  const stockTienda = productosEnLS();
+  
+  const stockTienda =  stockEnLS();
 
   let contenido = "";
 
@@ -144,8 +137,9 @@ function stock() {
       </div>
     </div>
     </div>`;
-    document.getElementById("productos").innerHTML = contenido;
+    
   });
+  document.getElementById("productos").innerHTML = contenido;
 }
 
 function agregarAlCarrito() {
@@ -171,7 +165,7 @@ function agregarAlCarrito() {
         showConfirmButton: false,
         timer: 1000
       })
-      subirstockCarritoLS(itemsCarrito);
+      guardarStockCarritoLS(itemsCarrito);
       botonCarrito();
 
     });
@@ -224,7 +218,7 @@ function totalCompra() {
   );
 }
 
-subirstockLS(articulos);
+jsonALocalStorage();
 stock();
 agregarAlCarrito();
 botonCarrito();
