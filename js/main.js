@@ -1,93 +1,10 @@
-const articulos = [
-  {
-    nombre: "Kaiken Estate",
-    id: 1,
-    precio: 1250,
-    imagen: "kaikenmalbec.png",
-    varietal: "MALBEC",
-  },
-  {
-    nombre: "Killka",
-    id: 2,
-    precio: 1100,
-    imagen: "kilkamalbec.png",
-    varietal: "MALBEC",
-  },
-  {
-    nombre: "Cordero con Piel de Lobo ",
-    id: 3,
-    precio: 990,
-    imagen: "corderolobo.png",
-    varietal: "MALBEC",
-  },
-  {
-    nombre: "Mil Piedras ",
-    id: 4,
-    precio: 1250,
-    imagen: "milpiedras.png",
-    varietal: "CABERNET SAUVIGNON",
-  },
-  {
-    nombre: "AlbaFlor",
-    id: 5,
-    precio: 1300,
-    imagen: "albaflor.png",
-    varietal: "CABERNET SAUVIGNON",
-  },
-  {
-    nombre: "Trivento Reserve",
-    id: 6,
-    precio: 1300,
-    imagen: "trivento.png",
-    varietal: "CABERNET SAUVIGNON",
-  },
-  {
-    nombre: "La Flor Sauvignon Blanc",
-    id: 7,
-    precio: 1100,
-    imagen: "laflorblanc.png",
-    varietal: "BLANCO",
-  },
-  {
-    nombre: "Crios Torrontes",
-    id: 8,
-    precio: 1100,
-    imagen: "crios.png",
-    varietal: "BLANCO",
-  },
-  {
-    nombre: "Santa Julia Chenin Dulce",
-    id: 9,
-    precio: 820,
-    imagen: "chenin.png",
-    varietal: "BLANCO",
-  },
-  {
-    nombre: "Norton Cosecha Tardia",
-    id: 10,
-    precio: 690,
-    imagen: "nortontardio.png",
-    varietal: "BLANCO",
-  },
-  {
-    nombre: "La Flor",
-    id: 11,
-    precio: 1150,
-    imagen: "laflorrose.png",
-    varietal: "ROSE",
-  },
-  {
-    nombre: "Kaiken Malbec",
-    id: 12,
-    precio: 1250,
-    imagen: "kaikenrose.png",
-    varietal: "ROSE",
-  },
-];
+
+const array = [];
 
 jsonALocalStorage();
+
 function jsonALocalStorage() {
-  const array = [];
+
 
   fetch("/json/articulos.json")
     .then((respuesta) => respuesta.json())
@@ -149,7 +66,7 @@ function agregarAlCarrito() {
       if (pos > -1) {
         itemsCarrito[pos].cantidad += 1;
       } else {
-        let item = articulos.find((vino) => vino.id === itemId);
+        let item = array.find((vino) => vino.id === itemId);
         item.cantidad = 1;
         itemsCarrito.push(item);
       }
